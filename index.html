@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Video Generator</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b12;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 22px;
+      text-align: center;
+      background: #12121d;
+      border-bottom: 1px solid #29293a;
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header p {
+      color: #aaa;
+      margin-top: 8px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 25px 18px;
+    }
+
+    .card {
+      background: #151522;
+      border: 1px solid #29293a;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 9px;
+      font-weight: bold;
+    }
+
+    textarea,
+    select,
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #38384c;
+      background: #0e0e17;
+      color: white;
+      outline: none;
+      margin-bottom: 18px;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .upload {
+      border: 2px dashed #44445a;
+      padding: 25px;
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .upload input {
+      border: none;
+      background: none;
+      margin: 12px 0 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      background: #6c5ce7;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5848d8;
+    }
+
+    #status {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+    }
+
+    .result {
+      display: none;
+      text-align: center;
+    }
+
+    .video-box {
+      background: #08080d;
+      border-radius: 14px;
+      padding: 40px 15px;
+      margin-top: 15px;
+      color: #888;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+
+    @media(max-width:600px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎬 AI Video Generator</h1>
+  <p>Create amazing videos from your ideas</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+
+    <label>📝 Video Prompt</label>
+
+    <textarea id="prompt"
+      placeholder="Example: A cinematic Ethiopian university campus at sunset, students walking and talking..."></textarea>
+
+    <div class="row">
+
+      <div>
+        <label>🎨 Video Style</label>
+        <select id="style">
+          <option>Cinematic</option>
+          <option>3D Animation</option>
+          <option>Realistic</option>
+          <option>Anime</option>
+          <option>Documentary</option>
+          <option>Cartoon</option>
+        </select>
+      </div>
+
+      <div>
+        <label>📱 Aspect Ratio</label>
+        <select id="ratio">
+          <option>16:9 YouTube</option>
+          <option>9:16 TikTok / Shorts</option>
+          <option>1:1 Square</option>
+        </select>
+      </div>
+
+    </div>
+
+    <label>🎵 Music</label>
+
+    <select id="music">
+      <option>No Music</option>
+      <option>Emotional</option>
+      <option>Cinematic</option>
+      <option>Inspirational</option>
+      <option>Epic</option>
+    </select>
+
+    <label>🖼️ Upload Image (Optional)</label>
+
+    <div class="upload">
+      <div>📁 Choose an image</div>
+      <input type="file" accept="image/*">
+    </div>
+
+    <button onclick="generateVideo()">
+      🚀 Generate Video
+    </button>
+
+  </div>
+
+  <div id="status">
+    ⏳ Preparing your video...
+  </div>
+
+  <div class="card result" id="result">
+
+    <h2>🎥 Your Video</h2>
+
+    <div class="video-box">
+      🎬 Video generation result will appear here
+    </div>
+
+    <br>
+
+    <button onclick="downloadVideo()">
+      ⬇️ Download Video
+    </button>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 AI Video Generator
+</footer>
+
+<script>
+
+function generateVideo() {
+
+  const prompt = document.getElementById("prompt").value.trim();
+
+  if (!prompt) {
+    alert("Please enter a video prompt first.");
+    return;
+  }
+
+  const status = document.getElementById("status");
+  const result = document.getElementById("result");
+
+  status.style.display = "block";
+  result.style.display = "none";
+
+  setTimeout(() => {
+
+    status.style.display = "none";
+    result.style.display = "block";
+
+  }, 2000);
+}
+
+function downloadVideo() {
+  alert("Real video download will work after connecting an AI video generation API.");
+}
+
+</script>
+
+</body>
+</html>
